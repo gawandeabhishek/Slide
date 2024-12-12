@@ -8,13 +8,9 @@ import {
   trackResponses,
 } from "@/actions/webhook/queries";
 import { sendDM } from "@/lib/fetch";
+import { openai } from "@/lib/openai";
 import { client } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
-import OpenAi from 'openai'
-
-export const openai = new OpenAi({
-    apiKey: process.env.OPENAI_API_KEY,
-});
 
 export async function GET(req: NextRequest) {
   const hub = req.nextUrl.searchParams.get("hub.challenge");

@@ -17,6 +17,17 @@ const AutomationList = () => {
 
   const { pathname } = usePaths();
 
+  const optimisticUiData = useMemo(() => {
+    if (latestVariable?.variables, data) {
+        const test =  [latestVariable.variables, ...data.data]
+        console.log(test)
+        return { data: test }
+    }
+
+    return data || { data: [] }
+  }, [latestVariable, data])
+
+
   if (data?.status !== 200 || data.data?.length <= 0) {
     return (
       <div className="h-[70vh] flex justify-center items-center flex-col gap-y-3">
@@ -25,16 +36,6 @@ const AutomationList = () => {
       </div>
     );
   }
-
-  const optimisticUiData = useMemo(() => {
-    if (latestVariable?.variables) {
-        const test =  [latestVariable.variables, ...data.data]
-        console.log(test)
-        return { data: test }
-    }
-
-    return data
-  }, [latestVariable, data])
 
   return (
     <div className="flex flex-col gap-y-3">

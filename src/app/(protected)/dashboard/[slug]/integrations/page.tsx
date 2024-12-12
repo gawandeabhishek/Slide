@@ -1,6 +1,6 @@
 import { INTEGRATION_CARDs } from "@/constants/integrations";
 import React from "react";
-import IntegrationCard from "./_components/integration-card/page";
+import IntegrationCard from "./_components/integration-card";
 
 const page = () => {
   return (
