@@ -11,8 +11,8 @@ export async function GET() {
   const session = await stripe.checkout.sessions.create({
     mode: "subscription",
     line_items: [{ price: priceId, quantity: 1 }],
-    success_url: `${process.env.NEXT_PUBLIC_HOST_URL}/payment?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${process.env.NEXT_PUBLIC_HOST_URL}/payment?cancel=true`,
+    success_url: `${process.env.NEXT_PUBLIC_HOST_URL || `https://${process.env.VERCEL_URL}`}/payment?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${process.env.NEXT_PUBLIC_HOST_URL || `https://${process.env.VERCEL_URL}`}/payment?cancel=true`,
   });
 
   if (session) {
